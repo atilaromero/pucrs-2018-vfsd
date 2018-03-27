@@ -6,8 +6,8 @@ module top_sqrt_svl;
 	bit clk;
 	always #10 clk = ~clk;
 	
-	interface_sqrt_svl interface_sqrt (clk);
-	//interface_sqrt_svl interface_sqrt (.*);
+	//interface_sqrt_svl interface_sqrt (clk);
+	interface_sqrt_svl interface_sqrt (.*);
 
 	//mapping
 	sqrt sqrt1(
@@ -20,5 +20,5 @@ module top_sqrt_svl;
 
 	test_sqrt_svl tb1 (interface_sqrt);
 	//test_sqrt_svl tb1 (interface_sqrt);
-
+	
 endmodule : top_sqrt_svl
