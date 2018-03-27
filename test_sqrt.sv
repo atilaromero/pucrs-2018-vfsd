@@ -1,7 +1,7 @@
 
 `timescale 1ns/1ns
 
-module test_sqrt_svl (interface_sqrt_svl.TEST interface_sqrt);
+program test_sqrt_svl (interface_sqrt_svl.TEST interface_sqrt);
 
   function int sqrt_good(int i);
     return $floor($sqrt(i));
@@ -36,4 +36,4 @@ module test_sqrt_svl (interface_sqrt_svl.TEST interface_sqrt);
     end
 	end
 
-endmodule
+endprogram

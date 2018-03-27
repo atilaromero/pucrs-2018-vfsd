@@ -8,6 +8,8 @@ vlog -work work top_sqrt.sv
 
 vsim work.top_sqrt_svl
 
-#do wave.do
-run 16000ns
+do wave.do
+
+onfinish stop
+run -all
 
