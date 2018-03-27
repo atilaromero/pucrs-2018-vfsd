@@ -1,0 +1,5 @@
+modelsim.ini
+*.mti
+*.mpf
+vsim.wlf
+work/
