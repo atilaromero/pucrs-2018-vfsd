@@ -1,14 +1,14 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /tb_sqrt_svl/clk
-add wave -noupdate /tb_sqrt_svl/eop
-add wave -noupdate /tb_sqrt_svl/rst
-add wave -noupdate /tb_sqrt_svl/out
-add wave -noupdate /tb_sqrt_svl/val
+add wave -noupdate /top_sqrt_svl/interface_sqrt/rst
+add wave -noupdate /top_sqrt_svl/interface_sqrt/clk
+add wave -noupdate /top_sqrt_svl/interface_sqrt/eop
+add wave -noupdate /top_sqrt_svl/interface_sqrt/val
+add wave -noupdate /top_sqrt_svl/interface_sqrt/out
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {3754 ns} 0}
+WaveRestoreCursors {{Cursor 1} {400 ns} 0}
 quietly wave cursor active 1
-configure wave -namecolwidth 150
+configure wave -namecolwidth 268
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
@@ -22,4 +22,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {15750 ns}
+WaveRestoreZoom {0 ns} {1325 ns}

@@ -2,9 +2,12 @@ vlib work
 vmap work work
 
 vcom -work work sqrt.vhd
-vlog -work work tb_sqrt_svl.sv
+vlog -work work interface_sqrt.sv
+vlog -work work test_sqrt.sv
+vlog -work work top_sqrt.sv
 
-vsim work.tb_sqrt_svl
+vsim work.top_sqrt_svl
 
 do wave.do
+run 4000 ns
 
