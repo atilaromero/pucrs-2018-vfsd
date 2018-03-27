@@ -3,3 +3,4 @@ modelsim.ini
 *.mpf
 vsim.wlf
 work/
+*.bak
