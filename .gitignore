@@ -4,3 +4,4 @@ modelsim.ini
 vsim.wlf
 work/
 *.bak
+transcript
