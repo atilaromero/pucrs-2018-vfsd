@@ -1,16 +1,36 @@
 class ReferenceSqrt;
 
+  string message;
+
+  //dont use virtual, is a constructor
+  //can have optional parameters
+  function new(string message="ReferenceSqrt");
+    this.message = message;
+  endfunction
+
   virtual function int sqrt(int i);
-    $display("ReferenceSqrt");
+    $display(message);
     return $floor($sqrt(i));
+  endfunction
+
+  function int roundPI();
+    return 3;
   endfunction
 
 endclass
 
 class BadSqrt extends ReferenceSqrt;
 
+  function new(string message="BadSqrt");
+    //$display("cant be here!!!");
+    super.new(message);
+  endfunction
+
   virtual function int sqrt(int i);
+    int pi;
     $display("BadSqrt");
+    //other super functions dont need to be at first line
+    pi = super.roundPI();
     return $ceil($sqrt(i));
   endfunction
 
