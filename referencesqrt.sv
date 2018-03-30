@@ -41,6 +41,16 @@ task automatic check(ReferenceSqrt refsqrt, int val, int expected);
   $display("val: %d, expected: %d, got: %d", val, expected, got);
 endtask
 
+task automatic testcast(ReferenceSqrt refsqrt);
+  BadSqrt bad;
+  $display("BadSqrt <- ", refsqrt.message);
+  if ($cast(bad, refsqrt))
+    $display("cast successful");
+  else
+    $display("`can't cast this` -- MC Hammer");
+  // $cast(bad, refsqrt); //may throw error
+endtask
+
 
 program automatic test;
   initial
@@ -55,6 +65,8 @@ program automatic test;
     $display("");
     check(refsqrt, val, expected);
     check(badsqrt, val, expected);
+    // testcast(badsqrt);
+    // testcast(refsqrt);
     $display("");
     $display("");
     $display("");
