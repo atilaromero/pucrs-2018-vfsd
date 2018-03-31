@@ -17,6 +17,13 @@ class ReferenceSqrt;
     return 3;
   endfunction
 
+  virtual function ReferenceSqrt copy(ReferenceSqrt to=null);
+    if (to == null)
+      to = new;
+    to.message = this.message;
+    return to;
+  endfunction
+
 endclass
 
 class BadSqrt extends ReferenceSqrt;
@@ -41,6 +48,32 @@ task automatic check(ReferenceSqrt refsqrt, int val, int expected);
   $display("val: %d, expected: %d, got: %d", val, expected, got);
 endtask
 
+program automatic test;
+  ReferenceSqrt refsqrt = new;
+  BadSqrt badsqrt = new;
+  int val = 8;
+  int expected = 2;
+
+  initial
+  begin
+    $display("##################################");
+    $display("");
+    $display("");
+    $display("");
+    check(refsqrt, val, expected);
+    check(badsqrt, val, expected);
+    // testcast(badsqrt);
+    // testcast(refsqrt);
+    // testcopy(refsqrt, badsqrt);
+    // $display("outter refsqrt:", refsqrt.message);
+    // $display("outter badsqrt:", badsqrt.message);
+    $display("");
+    $display("");
+    $display("");
+    $display("##################################");
+  end
+endprogram
+
 task automatic testcast(ReferenceSqrt refsqrt);
   BadSqrt bad;
   $display("BadSqrt <- ", refsqrt.message);
@@ -51,25 +84,15 @@ task automatic testcast(ReferenceSqrt refsqrt);
   // $cast(bad, refsqrt); //may throw error
 endtask
 
+task automatic testcopy(ReferenceSqrt refsqrt, ReferenceSqrt badsqrt);
+  ReferenceSqrt a = new;
+  ReferenceSqrt b;
 
-program automatic test;
-  initial
-  begin
-    automatic ReferenceSqrt refsqrt = new;
-    automatic BadSqrt badsqrt = new;
-    automatic int val = 8;
-    automatic int expected = 2;
-    $display("##################################");
-    $display("");
-    $display("");
-    $display("");
-    check(refsqrt, val, expected);
-    check(badsqrt, val, expected);
-    // testcast(badsqrt);
-    // testcast(refsqrt);
-    $display("");
-    $display("");
-    $display("");
-    $display("##################################");
-  end
-endprogram
+  refsqrt.copy(a);
+  b = badsqrt.copy();
+
+  a.message = "a.MESSAGE";
+  b.message = "b.MESSAGE";
+  $display("a: ", a.message);
+  $display("b: ", b.message);
+endtask
