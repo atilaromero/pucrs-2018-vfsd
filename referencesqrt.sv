@@ -45,7 +45,7 @@ endclass
 
 task automatic check(ReferenceSqrt refsqrt, int val, int expected);
   int got = refsqrt.sqrt(val);
-  $display("val: %d, expected: %d, got: %d", val, expected, got);
+  $display("val: ", val, " expected: ", expected, " got: ", got);
 endtask
 
 program automatic test;
